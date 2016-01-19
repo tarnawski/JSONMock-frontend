@@ -6,7 +6,7 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController(applicationDataService, $http) {
+  function HomeController($location, applicationDataService, store) {
 
     var vm = this;
     vm.login = login;
@@ -18,6 +18,10 @@
           console.log(data);
           if(data.status == 'Error'){
             vm.notMath = true;
+          }else{
+            store.set('APP_KEY', data.app_key);
+            console.log(store.get('APP_KEY'));
+            $location.path('/dashboard')
           }
         });
     }

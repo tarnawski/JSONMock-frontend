@@ -14,6 +14,7 @@
       'ui.router',
       'ui.bootstrap',
       'toastr',
+      'angular-storage',
 
       // App modules
       'JSONMock.home',
