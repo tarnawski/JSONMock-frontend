@@ -3,8 +3,11 @@
   'use strict';
 
   angular
-    .module('jsonmockFrontend')
+    .module('JSONMock')
     .constant('malarkey', malarkey)
-    .constant('moment', moment);
+    .constant('moment', moment)
+    .constant('CONSTANTS',{
+      BASE_URL: 'http://jsonmock.dev/app_dev.php/api'
+    });
 
 })();
