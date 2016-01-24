@@ -1,0 +1,218 @@
+[
+  {
+  "id": 1,
+  "value" : 100,
+  "label": "100 Continue"
+  },
+  {
+    "id": 2,
+    "value" : 101,
+    "label": "101 Switching Protocols"
+  },
+  {
+    "id": 3,
+    "value" : 103,
+    "label": "103 Checkpoint"
+  },
+  {
+    "id": 4,
+    "value" : 200,
+    "label": "200 OK"
+  },
+  {
+    "id": 5,
+    "value" : 201,
+    "label": "201 Created"
+  },
+  {
+    "id": 6,
+    "value" : 203,
+    "label": "203 Non-Authoritative Information"
+  },
+  {
+    "id": 7,
+    "value" : 202,
+    "label": "202 Accepted"
+  },
+  {
+    "id": 8,
+    "value" : 204,
+    "label": "204 No Content"
+  },
+  {
+    "id": 9,
+    "value" : 205,
+    "label": "205 Reset Content"
+  },
+  {
+    "id": 10,
+    "value" : 206,
+    "label": "206 Partial Content"
+  },
+  {
+    "id": 11,
+    "value" : 300,
+    "label": "300 Multiple Choices"
+  },
+  {
+    "id": 12,
+    "value" : 301,
+    "label": "301 Moved Permanently"
+  },
+  {
+    "id": 13,
+    "value" : 302,
+    "label": "302 Found"
+  },
+  {
+    "id": 14,
+    "value" : 303,
+    "label": "303 See Other"
+  },
+  {
+    "id": 15,
+    "value" : 304,
+    "label": "304 Not Modified"
+  },
+  {
+    "id": 16,
+    "value" : 306,
+    "label": "306 Switch Proxy"
+  },
+  {
+    "id": 17,
+    "value" : 307,
+    "label": "307 Temporary Redirect"
+  },
+  {
+    "id": 18,
+    "value" : 308,
+    "label": "308 Resume Incomplete"
+  },
+  {
+    "id": 19,
+    "value" : 400,
+    "label": "400 Bad Request"
+  },
+  {
+    "id": 20,
+    "value" : 401,
+    "label": "401 Unauthorized"
+  },
+  {
+    "id": 21,
+    "value" : 402,
+    "label": "402 Payment Required"
+  },
+  {
+    "id": 22,
+    "value" : 403,
+    "label": "403 Forbidden"
+  },
+  {
+    "id": 23,
+    "value" : 404,
+    "label": "404 Not Found"
+  },
+  {
+    "id": 24,
+    "value" : 405,
+    "label": "405 Method Not Allowed"
+  },
+  {
+    "id": 25,
+    "value" : 406,
+    "label": "406 Not Acceptable"
+  },
+  {
+    "id": 26,
+    "value" : 407,
+    "label": "407 Proxy Authentication Required"
+  },
+  {
+    "id": 27,
+    "value" : 408,
+    "label": "408 Request Timeout"
+  },
+  {
+    "id": 28,
+    "value" : 409,
+    "label": "409 Conflict"
+  },
+  {
+    "id": 29,
+    "value" : 410,
+    "label": "410 Gone"
+  },
+  {
+    "id": 30,
+    "value" : 411,
+    "label": "411 Length Required"
+  },
+  {
+    "id": 31,
+    "value" : 412,
+    "label": "412 Precondition Failed"
+  },
+  {
+    "id": 32,
+    "value" : 413,
+    "label": "413 Request Entity Too Large"
+  },
+  {
+    "id": 33,
+    "value" : 414,
+    "label": "414 Request-URI Too Long"
+  },
+  {
+    "id": 34,
+    "value" : 415,
+    "label": "415 Unsupported Media Type"
+  },
+  {
+    "id": 35,
+    "value" : 416,
+    "label": "416 Requested Range Not Satisfiable"
+  },
+  {
+    "id": 36,
+    "value" : 417,
+    "label": "417 Expectation Failed"
+  },
+  {
+    "id": 37,
+    "value" : 500,
+    "label": "500 Internal Server Error"
+  },
+  {
+    "id": 38,
+    "value" : 501,
+    "label": "501 Not Implemented"
+  },
+  {
+    "id": 39,
+    "value" : 502,
+    "label": "502 Bad Gateway"
+  },
+  {
+    "id": 40,
+    "value" : 503,
+    "label": "503 Service Unavailable"
+  },
+  {
+    "id": 40,
+    "value" : 504,
+    "label": "504 Gateway Timeout"
+  },
+  {
+    "id": 40,
+    "value" : 505,
+    "label": "505 HTTP Version Not Supported"
+  },
+  {
+    "id": 40,
+    "value" : 511,
+    "label": "511 Network Authentication Required"
+  }
+
+]

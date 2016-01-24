@@ -5,10 +5,10 @@
         .module('JSONMock')
         .service('applicationDataService', applicationDataService);
 
-  applicationDataService.$inject = ['$http', 'CONSTANTS'];
+  applicationDataService.$inject = ['$q', '$http', 'CONSTANTS'];
 
     /** @ngInject */
-    function applicationDataService($http, CONSTANTS) {
+    function applicationDataService($q, $http, CONSTANTS) {
         var service = {
             getApplication: getApplication,
             createApplication: createApplication
@@ -21,7 +21,7 @@
         function getApplication(appKey) {
           var request = $http({
             method: "get",
-            url: CONSTANTS.BASE_URL +'/application/' + appKey,
+            url: CONSTANTS.BASE_URL_API +'/application/' + appKey,
             params: {
               action: "get"
             }
@@ -33,7 +33,7 @@
         if (typeof(name)==='undefined') name = 'undefined';
         var request = $http({
           method: 'POST',
-          url: CONSTANTS.BASE_URL +'/application/',
+          url: CONSTANTS.BASE_URL_API +'/application/',
           data: { name: name }
 
       });
