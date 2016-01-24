@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('jsonmockFrontend')
+    .module('JSONMock')
     .config(config);
 
   /** @ngInject */
