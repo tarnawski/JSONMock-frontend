@@ -9,10 +9,10 @@
     <!-- Menu -->
     <div class="col-xs-4 text-right menu">
       <div class="item">
-        <h5><a ng-click="">CREATE</a></h5>
+        <h5><a href="" ng-click="dashboard.preCreate()">CREATE</a></h5>
       </div>
       <div class="item">
-        <h5><a href="#" ng-click="dashboard.logout()">LOGOUT</a></h5>
+        <h5><a href="" ng-click="dashboard.logout()">LOGOUT</a></h5>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div ng-show="!dashboard.home">
+        <div ng-show="!dashboard.createForm">
           <h3>Response details:</h3>
           <div class="panel panel-default">
             <div class="panel-body">
@@ -71,7 +71,8 @@
                 <div class="form-group has-success"
                      ng-class="requestForm.status_code.$valid ? 'has-success' : 'has-error'">
                   <label class="control-label">Returned HTTP Status:</label>
-                  <select name="status_code"  ng-options="item.value as item.label for item in dashboard.typeOfRequest" ng-model="dashboard.response.status_code" class="form-control"></select>
+                  <select name="status_code" ng-options="item.value as item.label for item in dashboard.typeOfRequest"
+                          ng-model="dashboard.response.status_code" class="form-control"></select>
 
                 </div>
 
@@ -85,8 +86,44 @@
                           class="btn btn-primary pull-right"
                           ng-class="!requestForm.$valid? 'disabled' : ''">Update response
                   </button>
-                  <button ng-click="dashboard.fixStyle()" type="button" class="btn btn-info">
-                    <span class="glyphicon glyphicon-align-left"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div ng-show="dashboard.createForm">
+          <h3>Create new response:</h3>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form name="requestNewForm">
+                <div class="form-group" ng-class="requestNewForm.name.$valid ? 'has-success' : 'has-error'">
+                  <label class="control-label">Name:</label>
+                  <input name="name" ng-model="dashboard.newResponse.name" type="text" class="form-control" required>
+                </div>
+                <div class="form-group" ng-class="requestNewForm.path.$valid ? 'has-success' : 'has-error'">
+                  <label class="control-label">Path:</label>
+                  <input name="path" ng-model="dashboard.newResponse.url" type="text" class="form-control" required>
+                </div>
+                <div class="form-group has-success" ng-class="requestNewForm.methodSelect.$valid ? 'has-success' : 'has-error'">
+                  <label class="control-label">Method:</label>
+                  <select name="methodSelect"  ng-options="item.value as item.label for item in dashboard.methodOfRequest"
+                          ng-model="dashboard.newResponse.method" class="form-control" required></select>
+                </div>
+                <div class="form-group has-success"
+                     ng-class="requestNewForm.status_code.$valid ? 'has-success' : 'has-error'">
+                  <label class="control-label">Returned HTTP Status:</label>
+                  <select name="status_code" ng-options="item.value as item.label for item in dashboard.typeOfRequest"
+                          ng-model="dashboard.newResponse.status_code" class="form-control" required></select>
+                </div>
+
+                <div class="form-group has-success"
+                     ng-class="requestNewForm.value.$valid ? 'has-success' : 'has-error'">
+                  <label class="control-label">Value:</label>
+                  <textarea name="value" ng-model="dashboard.newResponse.jsonValue" class="form-control" rows=12"
+                            json-validate required></textarea>
+                  <button ng-click="requestNewForm.$valid && dashboard.createResponse()"
+                          class="btn btn-primary pull-right"
+                          ng-class="!requestNewForm.$valid? 'disabled' : ''">Create response
                   </button>
                 </div>
               </form>
