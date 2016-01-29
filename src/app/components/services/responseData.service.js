@@ -11,7 +11,8 @@
     function responseDataService($q, $http, CONSTANTS) {
         var service = {
             getResponse: getResponse,
-            updateResponse: updateResponse
+            updateResponse: updateResponse,
+            createResponse: createResponse
         };
 
         return service;
@@ -29,6 +30,23 @@
           return( request.then( handleSuccess, handleError ) );
         }
 
+      function createResponse(appKey, response){
+        var request = $http({
+          method: 'POST',
+          url: CONSTANTS.BASE_URL_API +'/response/'+ appKey,
+          data: {
+            "name": response.name,
+            "url": response.url,
+            "value": response.value,
+            "method": response.method,
+            "statusCode": response.status_code
+          }
+
+        });
+
+        return( request.then( handleSuccess, handleError ) );
+      }
+
       function updateResponse(appKey, id, response){
         var request = $http({
           method: 'PUT',
@@ -40,10 +58,9 @@
             "method": response.method,
             "statusCode": response.status_code
           }
-
         });
-        return( request.then( handleSuccess, handleError ) );
 
+        return( request.then( handleSuccess, handleError ) );
       }
 
       function handleSuccess( response ) {
@@ -51,13 +68,7 @@
       }
 
       function handleError( response ) {
-        if (
-          ! angular.isObject( response.data ) ||
-          ! response.data.message
-        ) {
-          return( $q.reject( "An unknown error occurred." ) );
-        }
-        return( $q.reject( response.data.message ) );
+        return( response.data );
       }
     }
     })();
