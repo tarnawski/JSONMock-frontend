@@ -6,30 +6,37 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController($location, applicationDataService, store) {
+  function HomeController($state, applicationDataService, store, $stateParams) {
 
     var vm = this;
     vm.login = login;
     vm.create = create;
 
+    activate();
+
+    function activate(){
+      vm.info = $stateParams.message;
+    }
+
     function login(){
-      applicationDataService.getApplication(vm.appKey).then(
-        function( data ) {
-          if(data.status == 'Error'){
-            vm.notMath = true;
-          }else{
-            store.set('APP_KEY', data.app_key);
-            $location.path('/dashboard')
-          }
+      applicationDataService.get({id: vm.appKey},
+        function (data) {
+          store.set('APP_KEY', data.app_key);
+          $state.go('dashboard');
+      },
+        function(error){
+          vm.message = error.data.message;
         });
     }
 
     function create(name){
-      applicationDataService.createApplication(name).then(
-        function( data ) {
-          vm.appKey = data.app_key;
-          vm.createComplete = true;
-       });
+      var application = {
+        name: name
+      };
+      applicationDataService.save(application, function(data){
+        vm.appKey = data.app_key;
+        vm.createComplete = true;
+      });
     }
   }
 })();

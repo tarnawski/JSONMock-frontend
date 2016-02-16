@@ -13,7 +13,19 @@ $stateProvider
     url: '/dashboard',
     templateUrl: 'app/pages/dashboard/dashboard.html',
     controller: 'DashboardController',
-    controllerAs: 'dashboard'
+    controllerAs: 'dashboard',
+    params: {
+      message: null
+    },
+    resolve: {
+      message: /* @ngInject */
+        function ($stateParams) {
+          return $stateParams.message;
+        }
+    },
+    data: {
+      requireAuth: true
+    }
   });
 }
 

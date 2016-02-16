@@ -13,7 +13,19 @@ $stateProvider
     url: '/',
     templateUrl: 'app/pages/home/home.html',
     controller: 'HomeController',
-    controllerAs: 'home'
+    controllerAs: 'home',
+    params: {
+      message: null
+    },
+    resolve: {
+      message: /* @ngInject */
+        function ($stateParams) {
+          return $stateParams.message;
+        }
+    },
+    data: {
+      requireAuth: false
+    }
   });
 }
 

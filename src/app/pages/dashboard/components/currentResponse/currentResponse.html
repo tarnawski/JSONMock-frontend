@@ -1,0 +1,52 @@
+<section class="currentResponse">
+  <h3>Response details:</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form name="responseForm">
+        <div class="form-group has-warning">
+          <label class="control-label">Your response URL:</label>
+          <input type="text" class="form-control"
+                 value="{{currentResponse.baseUrlApp}}/{{currentResponse.APP_KEY}}/{{currentResponse.response.url}}"
+                 readonly>
+        </div>
+        <div class="form-group" ng-class="responseForm.name.$dirty && responseForm.name.$invalid ? 'has-error' : ''">
+          <label class="control-label">Name:</label>
+          <input name="name" ng-model="currentResponse.response.name" type="text" class="form-control" required>
+        </div>
+        <div class="form-group" ng-class="responseForm.path.$dirty && responseForm.path.$invalid ? 'has-error' : ''">
+          <label class="control-label">Path:</label>
+          <input name="path" ng-model="currentResponse.response.url" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Method:</label>
+          <select ng-model="currentResponse.response.method" class="form-control" name="methodSelect"
+                  id="methodSelect">
+            <option>GET</option>
+            <option>POST</option>
+            <option>PUT</option>
+            <option>DELETE</option>
+          </select>
+        </div>
+        <div class="form-group" ng-class="responseForm.status_code.$dirty && responseForm.status_code.$invalid ? 'has-error' : ''">
+          <label class="control-label">Returned HTTP Status:</label>
+          <select name="status_code" ng-options="item.value as item.label for item in currentResponse.typeOfRequest"
+                  ng-model="currentResponse.response.status_code" class="form-control"></select>
+        </div>
+
+          <div class="form-group" ng-class="responseForm.value.$dirty && responseForm.value.$invalid ? 'has-error' : ''">
+          <label class="control-label">Value:</label>
+
+                  <textarea name="value" ng-model="currentResponse.response.jsonValue" class="form-control" rows=12"
+                            json-validate required></textarea>
+
+
+        </div>
+      </form>
+      <button ng-click="currentResponse.deleteResponse(currentResponse.response.id)"
+              class="btn btn-danger pull-right"
+      >Delete response
+      </button>
+    </div>
+  </div>
+  </div>
+</section>
