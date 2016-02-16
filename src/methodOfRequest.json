@@ -1,0 +1,22 @@
+[
+  {
+  "id": 1,
+  "value" : "GET",
+  "label": "GET"
+  },
+  {
+    "id": 2,
+    "value" : "POST",
+    "label": "POST"
+  },
+  {
+    "id": 3,
+    "value" : "PUT",
+    "label": "PUT"
+  },
+  {
+    "id": 4,
+    "value" : "DELETE",
+    "label": "DELETE"
+  }
+]
