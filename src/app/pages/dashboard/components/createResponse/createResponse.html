@@ -13,20 +13,21 @@
 
         <div class="form-group has-feedback">
           <label class="control-label">Name:</label>
-          <input name="name" ng-model="createResponse.response.name" type="text" class="form-control" required>
+           <input name="name" ng-model="createResponse.response.name" type="text" class="form-control" required>
           <span ng-class="createForm.name.$valid ? 'glyphicon glyphicon-ok form-control-feedback': 'glyphicon glyphicon-warning-sign form-control-feedback'"></span>
         </div>
 
         <div class="form-group has-feedback">
           <label class="control-label">Path:</label>
-          <input name="path" ng-model="createResponse.response.url" type="text" class="form-control" required>
+          <h4 class="error" ng-show="createForm.path.$error.requestUnique">Response exist</h4>
+          <input name="path" ng-model="createResponse.response.url" type="text" class="form-control" patch-ch="method" response-unique required>
           <span ng-class="createForm.path.$valid ? 'glyphicon glyphicon-ok form-control-feedback': 'glyphicon glyphicon-warning-sign form-control-feedback'"></span>
         </div>
 
         <div class="form-group has-feedback">
           <label class="control-label">Method:</label>
-          <select name="method" ng-model="createResponse.response.method" class="form-control" name="methodSelect"
-                  id="methodSelect" required>
+          <select name="method" id="method" ng-model="createResponse.response.method" class="form-control" name="methodSelect"
+                   required>
             <option>GET</option>
             <option>POST</option>
             <option>PUT</option>
