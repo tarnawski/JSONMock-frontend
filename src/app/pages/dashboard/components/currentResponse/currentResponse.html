@@ -51,7 +51,7 @@
         </div>
 
       </form>
-      <button ng-click="currentResponse.updateResponse(currentResponse.response)"
+      <button ng-click="responseForm.$valid && currentResponse.updateResponse(currentResponse.response)"
               class="btn btn-primary pull-right" >Update response </button>
       <button ng-click="currentResponse.deleteResponse(currentResponse.response.id)"
               class="btn btn-danger pull-right" >Delete response </button>
