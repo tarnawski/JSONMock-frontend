@@ -22,7 +22,7 @@
       applicationDataService.get({id: vm.appKey},
         function (data) {
           store.set('APP_KEY', data.app_key);
-          $state.go('dashboard');
+          $state.go('dashboard', { message: 'Login successful'});
       },
         function(error){
           vm.message = error.data.message;
