@@ -19,14 +19,15 @@
 
         <div class="form-group has-feedback">
           <label class="control-label">Path:</label>
-          <input name="path" ng-model="currentResponse.response.url" type="text" class="form-control" required>
+          <h4 class="error" ng-show="responseForm.path.$error.requestUnique">Response exist</h4>
+          <input name="path" ng-model="currentResponse.response.url" type="text" class="form-control" patch-ch="method" response-unique required>
           <span ng-class="responseForm.path.$valid ? 'glyphicon glyphicon-ok form-control-feedback': 'glyphicon glyphicon-warning-sign form-control-feedback'"></span>
         </div>
 
         <div class="form-group has-feedback">
           <label class="control-label">Method:</label>
           <select name="method" ng-model="currentResponse.response.method" class="form-control" name="methodSelect"
-                  id="methodSelect" required>
+                  id="method" required>
             <option>GET</option>
             <option>POST</option>
             <option>PUT</option>
