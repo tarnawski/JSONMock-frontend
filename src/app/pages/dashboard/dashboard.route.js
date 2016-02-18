@@ -1,20 +1,31 @@
-(function ()
-{
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('JSONMock.dashboard')
-        .config(routeConfig);
+  angular
+    .module('JSONMock.dashboard')
+    .config(routeConfig);
 
-/** @ngInject */
-function routeConfig($stateProvider) {
-$stateProvider
-  .state('dashboard', {
-    url: '/dashboard',
-    templateUrl: 'app/pages/dashboard/dashboard.html',
-    controller: 'DashboardController',
-    controllerAs: 'dashboard'
-  });
-}
+  /** @ngInject */
+  function routeConfig($stateProvider) {
+    $stateProvider
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'app/pages/dashboard/dashboard.html',
+        controller: 'DashboardController',
+        controllerAs: 'dashboard',
+        params: {
+          message: null
+        },
+        resolve: {
+          message: /* @ngInject */
+            function ($stateParams) {
+              return $stateParams.message;
+            }
+        },
+        data: {
+          requireAuth: true
+        }
+      });
+  }
 
 })();

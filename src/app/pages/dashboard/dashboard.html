@@ -1,135 +1,25 @@
 <div class="container">
   <div class="row">
-    <!-- Logo -->
-    <div class="col-xs-8">
+    <div class="col-md-5">
       <h1>JSONMock</h1>
       <p><h4>Mock HTTP responses to test application</h4></p>
     </div>
-
-    <!-- Menu -->
-    <div class="col-xs-4 text-right menu">
-      <div class="item">
-        <h5><a href="" ng-click="dashboard.preCreate()">CREATE</a></h5>
-      </div>
-      <div class="item">
-        <h5><a href="" ng-click="dashboard.logout()">LOGOUT</a></h5>
-      </div>
+    <div class="col-md-7">
+      <div ng-show="dashboard.info && dashboard.count" class="alert alert-info">{{dashboard.info}}</div>
+      <div class="item pull-right" ng-show="!dashboard.count"><a ng-click="dashboard.logout()">LOGOUT</a></div>
     </div>
   </div>
-
   <div class="jumbotron">
     <div class="row">
-      <div ng-show="dashboard.message" class="alert alert-info message">{{dashboard.message}}</div>
       <div class="col-md-6">
-        <h3>Application details:</h3>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <b>Application name</b><br>
-            {{dashboard.application.name}}<br><br>
-            <b>APP_KEY:</b><br>
-            {{dashboard.application.app_key}}
-          </div>
-        </div>
-        <div class="panel panel-default" ng-repeat="response in dashboard.application.responses">
-          <div ng-click="dashboard.showDetails(response.id)" class="panel-body">
-            <span class="label label-primary">{{response.method}}</span>
-            {{response.url}}
-            <span class="pull-right">{{response.name}}</span>
-          </div>
-        </div>
+        <application></application>
+        <responses response="dashboard.currentResponse"></responses>
+        <button ng-show="dashboard.currentResponse" ng-click="dashboard.currentResponse = false"
+                class="btn btn-success pull-right" >Create response </button>
       </div>
       <div class="col-md-6">
-        <div ng-show="!dashboard.createForm">
-          <h3>Response details:</h3>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <form name="requestForm">
-                <div class="form-group has-warning">
-                  <label class="control-label">Your response URL:</label>
-                  <input type="text" class="form-control"
-                         value="{{dashboard.baseUrlApp}}/{{dashboard.application.app_key}}/{{dashboard.response.url}}"
-                         readonly>
-                </div>
-                <div class="form-group" ng-class="requestForm.name.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Name:</label>
-                  <input name="name" ng-model="dashboard.response.name" type="text" class="form-control" required>
-                </div>
-                <div class="form-group" ng-class="requestForm.path.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Path:</label>
-                  <input name="path" ng-model="dashboard.response.url" type="text" class="form-control" required>
-                </div>
-                <div class="form-group has-success">
-                  <label class="control-label">Method:</label>
-                  <select ng-model="dashboard.response.method" class="form-control" name="methodSelect"
-                          id="methodSelect">
-                    <option>GET</option>
-                    <option>POST</option>
-                    <option>PUT</option>
-                    <option>DELETE</option>
-                  </select>
-                </div>
-                <div class="form-group has-success"
-                     ng-class="requestForm.status_code.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Returned HTTP Status:</label>
-                  <select name="status_code" ng-options="item.value as item.label for item in dashboard.typeOfRequest"
-                          ng-model="dashboard.response.status_code" class="form-control"></select>
-
-                </div>
-
-                <div class="form-group has-success" ng-class="requestForm.value.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Value:</label>
-
-                  <textarea name="value" ng-model="dashboard.response.jsonValue" class="form-control" rows=12"
-                            json-validate required></textarea>
-
-                  <button ng-click="requestForm.$valid && dashboard.updateResponse(dashboard.response.id)"
-                          class="btn btn-primary pull-right"
-                          ng-class="!requestForm.$valid? 'disabled' : ''">Update response
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div ng-show="dashboard.createForm">
-          <h3>Create new response:</h3>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <form name="requestNewForm">
-                <div class="form-group" ng-class="requestNewForm.name.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Name:</label>
-                  <input name="name" ng-model="dashboard.newResponse.name" type="text" class="form-control" required>
-                </div>
-                <div class="form-group" ng-class="requestNewForm.path.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Path:</label>
-                  <input name="path" ng-model="dashboard.newResponse.url" type="text" class="form-control" required>
-                </div>
-                <div class="form-group has-success" ng-class="requestNewForm.methodSelect.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Method:</label>
-                  <select name="methodSelect"  ng-options="item.value as item.label for item in dashboard.methodOfRequest"
-                          ng-model="dashboard.newResponse.method" class="form-control" required></select>
-                </div>
-                <div class="form-group has-success"
-                     ng-class="requestNewForm.status_code.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Returned HTTP Status:</label>
-                  <select name="status_code" ng-options="item.value as item.label for item in dashboard.typeOfRequest"
-                          ng-model="dashboard.newResponse.status_code" class="form-control" required></select>
-                </div>
-
-                <div class="form-group has-success"
-                     ng-class="requestNewForm.value.$valid ? 'has-success' : 'has-error'">
-                  <label class="control-label">Value:</label>
-                  <textarea name="value" ng-model="dashboard.newResponse.jsonValue" class="form-control" rows=12"
-                            json-validate required></textarea>
-                  <button ng-click="requestNewForm.$valid && dashboard.createResponse()"
-                          class="btn btn-primary pull-right"
-                          ng-class="!requestNewForm.$valid? 'disabled' : ''">Create response
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <current-response ng-show="dashboard.currentResponse" current-response="dashboard.currentResponse" ></current-response>
+        <create-response ng-show="!dashboard.currentResponse" current-response="dashboard.currentResponse" ></create-response>
       </div>
     </div>
   </div>

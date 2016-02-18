@@ -1,0 +1,9 @@
+<section class="Response">
+  <div class="panel panel-default" ng-repeat="response in responses.responses">
+    <div ng-click="responses.changeResponse(response)" class="panel-body">
+      <span class="label label-primary">{{response.method}}</span>
+      {{response.url}}
+      <span class="pull-right">{{response.name}}</span>
+    </div>
+  </div>
+</section>

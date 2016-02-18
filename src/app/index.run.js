@@ -6,9 +6,14 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
+  function runBlock($rootScope, $state, store) {
+    $rootScope.$on('$stateChangeStart', function (event, toState) {
+      var requireAuth = toState.data.requireAuth;
 
-    $log.debug('runBlock end');
+      if (requireAuth && store.get('APP_KEY')== null) {
+        event.preventDefault();
+        $state.go('home', { message: 'To view this page you must be logged in.'});
+      }
+    });
   }
-
 })();
