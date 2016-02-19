@@ -1,9 +1,10 @@
 describe('Dashboard', function() {
   var dashboardPage = require('./pages/dashboard.po.js');
+  var homePage = require('./pages/home.po.js');
 
   beforeEach(function () {
-    dashboardPage.open();
-    browser.executeScript('window.localStorage.setItem("APP_KEY", "W4ECYPBAFLT2ZDIH7K3SO0GNVJ1U5XQM9R86");');
+    homePage.open();
+    homePage.login();
   });
 
   afterEach(function() {
@@ -11,9 +12,23 @@ describe('Dashboard', function() {
     browser.executeScript('window.localStorage.clear();');
   });
 
-  it('should navigate to dashboard page', function() {
-    browser.executeScript('window.localStorage.setItem("APP_KEY", "W4ECYPBAFLT2ZDIH7K3SO0GNVJ1U5XQM9R86");');
-    console.log(browser.executeScript('window.localStorage.getItem("APP_KEY");'));
+  it('should show dashboard', function() {
+
     expect(browser.getLocationAbsUrl()).toMatch("/dashboard");
+  });
+
+  it('after login should show app details, response list and form to create response', function() {
+    expect(dashboardPage.applicationDetails.isDisplayed()).toBe(true);
+    expect(dashboardPage.responsesList.isDisplayed()).toBe(true);
+    expect(dashboardPage.createResponse.isDisplayed()).toBe(true);
+    expect(dashboardPage.currentResponse.isDisplayed()).toBe(false);
+  });
+
+  it('after to some(first) response should show form to edit response', function() {
+    dashboardPage.firstResponse.click();
+    expect(dashboardPage.applicationDetails.isDisplayed()).toBe(true);
+    expect(dashboardPage.responsesList.isDisplayed()).toBe(true);
+    expect(dashboardPage.createResponse.isDisplayed()).toBe(false);
+    expect(dashboardPage.currentResponse.isDisplayed()).toBe(true);
   });
 });

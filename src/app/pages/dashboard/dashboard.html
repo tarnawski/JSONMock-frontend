@@ -5,7 +5,7 @@
       <p><h4>Mock HTTP responses to test application</h4></p>
     </div>
     <div class="col-md-7">
-      <div ng-show="dashboard.info && dashboard.count" class="alert alert-info">{{dashboard.info}}</div>
+      <div id="info" ng-show="dashboard.info && dashboard.count" class="alert alert-info" ng-bind="dashboard.info"></div>
       <div class="item pull-right" ng-show="!dashboard.count"><a ng-click="dashboard.logout()">LOGOUT</a></div>
     </div>
   </div>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-md-6">
         <application></application>
-        <responses response="dashboard.currentResponse"></responses>
+        <responses id="responsesList" response="dashboard.currentResponse"></responses>
         <button ng-show="dashboard.currentResponse" ng-click="dashboard.currentResponse = false"
                 class="btn btn-success pull-right" >Create response </button>
       </div>
