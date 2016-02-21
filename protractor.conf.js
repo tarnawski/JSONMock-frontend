@@ -21,7 +21,7 @@ exports.config = {
       name: 'Application name'
     },
     login: {
-      APP_KEY: 'W4ECYPBAFLT2ZDIH7K3SO0GNVJ1U5XQM9R86'
+      APP_KEY: '1Z70LMBXQNH6F9U5T4P3O8WVSEGAIDY2JKCR'
     }
   },
 
