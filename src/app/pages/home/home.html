@@ -1,32 +1,49 @@
-<div class="container">
-  <h1>JSONMock</h1>
-  <p><h4>Mock HTTP responses to test application</h4></p>
+<div class="container Home">
+  <div class="row">
+    <div class="col-md-5">
+      <h1>JSONMock</h1>
+      <p><h4>Mock HTTP responses to test application</h4></p>
+    </div>
+    <div class="col-md-7">
+      <div ng-show="home.info" class="alert alert-info">{{home.info}}</div>
+    </div>
+  </div>
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-6">
         <div ng-show="!home.createComplete">
-        <h4>Create new application:</h4>
-        <input type="text" class="form-control" placeholder="Name of application" ng-model="home.appName">
-        <button ng-click="home.create(home.appName)" type="button" class="btn btn-success btn-block">Create new application</button>
+          <h4>Create new application:</h4>
+          <form name="registerForm">
+            <input name="appName" type="text" class="form-control" placeholder="Name of application"
+                   ng-model="home.appName" required>
+            <button ng-click="registerForm.appName.$valid && home.create(home.appName)"
+                    type="button"
+                    class="btn btn-success btn-block">Create new application
+            </button>
+          </form>
         </div>
         <div class="complete" ng-show="home.createComplete">
           <h3>Create application complete!</h3>
           <h5>Your unique APP_KEY : <b>{{home.appKey}}</b></h5>
-          <h5>Keep it, you will need APP_KEY to use mocked request in your Rest API and log into the application control panel.</h5>
+          <h5>Keep it, you will need APP_KEY to use mocked request in your Rest API and log into the application control
+            panel.</h5>
           <h5>Now you can login, just click on the button below: "Login to application"</h5>
         </div>
         <br>
         <h4>Login to your application:</h4>
-        <div ng-class="home.notMath ? 'has-error' : ''" class="form-group">
-        <input  type="text" class="form-control" placeholder="APP_KEY" ng-model="home.appKey">
-        <h6 ng-show="home.notMath" class="error">Wrong APP_KEY</h6>
-        <button ng-click="home.login()" type="button" class="btn btn-primary btn-block">Login to application</button>
-        </div>
+        <form name="loginForm">
+          <input name="appId" type="text" class="form-control" placeholder="APP_KEY" ng-model="home.appKey" required>
+          <h6 ng-show="home.message" class="error">{{home.message}}</h6>
+          <button ng-click="loginForm.appId.$valid && home.login()"
+                  type="button"
+                  class="btn btn-primary btn-block">Login to application
+          </button>
+        </form>
       </div>
       <div class="col-md-6">
         <h1>JSONMock</h1>
         <h2>The application is designed to mock JSON response.</h2>
-         <h3>Mock your JSON responses and test your REST API!</h3>
+        <h3>Mock your JSON responses and test your REST API!</h3>
       </div>
     </div>
   </div>
